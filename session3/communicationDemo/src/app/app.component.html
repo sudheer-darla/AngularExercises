@@ -1,0 +1,13 @@
+<!-- <app-main></app-main> -->
+<p>Current Date without pipe: {{ currDate }}</p>
+<p>Current Date: {{ currDate | date }}</p>
+<p>Current Date: {{ currDate | date | uppercase }}</p>
+<p>Current Date: {{ currDate | date : "short" }}</p>
+<p>Current Date: {{ currDate | date : "long" }}</p>
+<p>{{ 500 | currency : "USD" }}</p>
+<p>{{ 500 | currency : "EUR" }}</p>
+
+<div>
+  <p>{{ "ABCDEFGHIJ" }}</p>
+  <p>{{ "ABCDEFGHIJ" | firstFive | lowercase }}</p>
+</div>

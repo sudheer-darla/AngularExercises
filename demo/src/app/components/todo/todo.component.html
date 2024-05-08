@@ -1,0 +1,17 @@
+<label for="">Enter task: </label>
+<input type="text" [(ngModel)]="currentTask" />
+<button (click)="OnAdd()">Add</button>
+
+<!-- <p>current task {{ currentTask }}</p> -->
+
+<div *ngIf="show">
+  <ul *ngFor="let item of tasks">
+    <li>{{ item }}</li>
+  </ul>
+</div>
+
+<div>
+  <p>Date is {{ currDate | date : "long" }}</p>
+  <p>5000 INR = {{ 5000 | currency : "EUR" }} USD</p>
+  <button (click)="Test({ type: 'string', value: '5' })">Test</button>
+</div>

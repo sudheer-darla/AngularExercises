@@ -1,0 +1,7 @@
+<h2>Main App</h2>
+<app-data (sendData)="OnDataReceived($event)"></app-data>
+<app-operation (sendOperator)="OnOperatorReceived($event)"></app-operation>
+<app-presentation
+  [value]="selectedNumber"
+  [operation]="selectedOperation"
+></app-presentation>

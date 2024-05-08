@@ -1,0 +1,8 @@
+<div class="Main">
+  <app-data (sendValue)="OnValueChange($event)"></app-data>
+  <app-operator (operationSelection)="OnOperationChange($event)"></app-operator>
+  <app-presentation
+    [selectedNumber]="selectedNumber"
+    [selectedOperation]="selectedOperation"
+  ></app-presentation>
+</div>
