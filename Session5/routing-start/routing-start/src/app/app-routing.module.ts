@@ -7,6 +7,8 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServersComponent } from './servers/servers.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
+import { AuthGuard, AuthChildGuard } from './guards/auth.guard.service';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 
 const myRoutes: Route[] = [
   { path: '', component: HomeComponent },
@@ -18,18 +20,29 @@ const myRoutes: Route[] = [
   {
     path: 'servers',
     component: ServersComponent,
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthChildGuard],
     children: [
       { path: ':id', component: ServerComponent },
-      { path: ':id/edit', component: EditServerComponent },
+      {
+        path: ':id/edit',
+        component: EditServerComponent,
+        canDeactivate: [CanDeactivateGuard],
+      },
     ],
   },
-  { path: 'something', component: NotFoundComponent },
+  {
+    path: 'something',
+    component: NotFoundComponent,
+    data: { message: 'Static data' },
+  },
   { path: 'somethingelse', redirectTo: '/something' },
   // { path: '', redirectTo: '/something', pathMatch: 'full' },
   { path: '**', redirectTo: '/something' },
 ];
 
 @NgModule({
+  // imports: [RouterModule.forRoot(myRoutes, { useHash: true })],
   imports: [RouterModule.forRoot(myRoutes)],
   exports: [RouterModule],
 })

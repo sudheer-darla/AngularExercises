@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../Authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private authservice: AuthenticationService
+  ) {}
 
   ngOnInit() {}
 
@@ -21,5 +26,16 @@ export class HomeComponent implements OnInit {
       queryParams: { allowEdit: '1' },
       fragment: 'loading',
     });
+  }
+
+  Login() {
+    console.log('Logging in');
+
+    this.authservice.Login();
+  }
+
+  Logout() {
+    console.log('Logging out');
+    this.authservice.Logout();
   }
 }
